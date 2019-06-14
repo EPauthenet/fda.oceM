@@ -32,8 +32,8 @@ function pc_plot(pca,pc,n)
     plot(pc(:,n(1)),pc(:,n(2)),'.k');
     xlabel(['PC',num2str(n(1)),' (',num2str(round(pca.pval(n(1)),2)),'%)'])
     ylabel(['PC',num2str(n(2)),' (',num2str(round(pca.pval(n(2)),2)),'%)'])
-    yline(0);
-    xline(0);
+    yline(0,'--');
+    xline(0,'--');
   end
   
   if length(n)==3
@@ -43,5 +43,6 @@ function pc_plot(pca,pc,n)
     ylabel(['PC',num2str(n(2)),' (',num2str(round(pca.pval(n(2)),2)),'%)'])
     zlabel(['PC',num2str(n(3)),' (',num2str(round(pca.pval(n(3)),2)),'%)'])
   end
+  
 
 

@@ -42,4 +42,6 @@ end
 Cc = C - repmat(Cm,nobs,1);
 
 pc = Cc * pca.W' * pca.M * pca.vectors;
+end
+
 

@@ -84,7 +84,7 @@ pca.pval = 100 * pca.values / sum(pca.values);
 pca.vecnotWM = pca_vectors;
 pca.M = M;
 pca.vectors = Mdeminv * Wdeminv * pca_vectors;
-pca.axes = pca.vectors .* repmat(sqrt(pca.values),1,ndim*nbas);
+pca.axes = pca.vectors .* sqrt(pca.values)';
 
 pca.basis = basis;
 pca.metric = metric;

@@ -30,7 +30,8 @@ function [fdobj] = bspl(Xi,Pi,nbas,fdn)
 %
 % See also function fpca for functional principal component analysis of multivariate hydrographic profiles.
 
-if ~exist('fdn','var'), fdn = list('Temperature','Salinity'); end
+if ~exist('nbas','var'), nbas = 20; end
+if ~exist('fdn','var'), fdn = {'Temperature','Salinity'}; end
 fdnames{1} = 'Level';
 fdnames{2} = 'Station';
 fdnames{3} = fdn;
@@ -40,3 +41,4 @@ Breaks=prange(1)+(prange(2)-prange(1))*tan(0:1/(nbas-3):1)'/tan(1);
 basis = create_bspline_basis(prange,nbas,4,Breaks);
 
 fdobj = data2fd(Pi,Xi,basis,fdnames);
+end

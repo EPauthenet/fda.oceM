@@ -38,12 +38,11 @@ function eigenf_plot(pca,te,sign)
   figure(1),clf
   for k = 1:ndim
     d  = ((k-1)*nbas+1):(k*nbas);                                   % Position of the variable k in the eigenvectors
-    pb = round(100*sum(pca.vecnotWM(d,te).^2),0);                   % Percentage of the bloc
-    fdobj_vp = fd(Cm(d)' + pca.axes(d,te),pca.basis,pca.fdnames);
-    fdobj_vm = fd(Cm(d)' - pca.axes(d,te),pca.basis,pca.fdnames);
+    pb = round(100*sum(pca.vecnotWM(d,te).^2),2);                   % Percentage of the bloc
+    fdobj_vec = fd(pca.axes(d,te),pca.basis,pca.fdnames);
     fdobj_m   = fd(Cm(d)',pca.basis,pca.fdnames);
-    vp = eval_fd(depth,fdobj_vp);
-    vm = eval_fd(depth,fdobj_vm);
+    vp = eval_fd(depth,(fdobj_m + sign.*fdobj_vec));
+    vm = eval_fd(depth,fdobj_m - sign.*fdobj_vec);
     prof_m = eval_fd(depth,fdobj_m);
 
     subplot(1,2,k)
@@ -51,10 +50,10 @@ function eigenf_plot(pca,te,sign)
     xlabel(char([pca.fdnames{3}{k}," (",num2str(pb)," %)"]))
     ylabel(pca.fdnames(1))
     xlim([min([vp;vm;prof_m]) max([vp;vm;prof_m])])
-    ylim([-max(depth) 0])
+    ylim([min([vp;vm;prof_m]) max([vp;vm;prof_m])])
     hold on
     plot(vp, -depth, 'r')
     plot(vm, -depth, 'b')
   end
-  title(['PC',num2str(te),' (',num2str(round(pca.pval(te),0)),'%)'])
+  title(['PC',num2str(te),' (',num2str(round(pca.pval(te),2)),'%)'])
 end
