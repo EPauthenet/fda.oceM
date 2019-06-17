@@ -61,13 +61,13 @@ X_reco = eval_fd(Pi,fdobj_reco);
 
 And finally we can represent the profiles reconstructed compared to the original data :
 ``` Matlab
-i = 3  %index of a profile
+i = 600  %index of a profile
 figure(1),clf
-for k = 1:ndim    %Loop for each variable                        
+for k = 1:pca.ndim    %Loop for each variable                        
   subplot(1,2,k)
   plot(Xi(:,i,k),-Pi,'ko')              %Plot of the raw data
   xlim([min([Xi(:,i,k);X_reco(:,i,k)]) max([Xi(:,i,k);X_reco(:,i,k)])])
-  ylim([-max(depth) 0]);
+  ylim([-max(Pi) 0]);
   xlabel(char([pca.fdnames{3}{k}]))
   ylabel(pca.fdnames(1))
   hold on
@@ -76,5 +76,5 @@ for k = 1:ndim    %Loop for each variable
 end
 legend('raw','spline','reconstructed')
 ```
-<img src="https://github.com/EPauthenet/fda.oceM/blob/master/figures/reco_prof3.png" alt="drawing" width="1000px"/>
+<img src="https://github.com/EPauthenet/fda.oceM/blob/master/figures/reco_prof600.png" alt="drawing" width="1000px"/>
 
