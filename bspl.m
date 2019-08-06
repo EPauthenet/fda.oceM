@@ -1,4 +1,4 @@
-function [fdobj] = bspl(Xi,Pi,nbas,fdn)
+function [fdobj] = bspl(Pi,Xi,nbas,fdn)
 % B-spline fits on Multivariate Hydrographic Profiles
 % 
 % BSPL This function fits B-splines on multivariate hydrographic profiles and return a functional data object.

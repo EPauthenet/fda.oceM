@@ -21,7 +21,7 @@ Here is an example of how to use these functions. We compute the modes for tempe
 First we load the data and fit the Bsplines on the 1691 profiles of the example. By default the function fit 20 Bsplines. It returns a fd object named 'fdobj' :
 ``` Matlab
 load GLORYS_SO_2015-12.mat
-fdobj = bspl(Xi,Pi);
+fdobj = bspl(Pi,Xi);
 ```
 
 Then we apply the FPCA on the fd object :
